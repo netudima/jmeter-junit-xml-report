@@ -1,0 +1,14 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,grpThreads,allThreads,Latency,IdleTime
+2016/11/02 22:46:27,187,Valid sample,200,OK,Thread Group 1-1,text,true,,390,1,1,187,0
+2016/11/02 22:46:27,7,Failed response assert,500,Internal Server Error,Thread Group 1-1,text,false,"Value expected to be 'SUCCESS', but found 'FAILED'",356,1,1,7,0
+2016/11/02 22:46:27,13,Failed multi-line assert,404,Not Found,Thread Group 1-1,text,false,"Test failed: text expected to equal /
+
+****** received  : [[[Resource is not registered]]]
+
+****** comparison: [[[<?xml version=""1.0"" encoding=""UTF-8"" standalone=""yes""?>
+<object id=""9145979183351985501"">
+    <test...]]]
+
+/",227,1,1,13,0
+2016/11/02 22:46:27,4,Another valid sample,200,OK,Thread Group 1-1,text,true,,253,1,1,3,0
+2016/11/02 22:46:27,109,HTTP Request to an invalid address,Non HTTP response code: java.net.UnknownHostException,Non HTTP response message: googleddddddd.com: unknown error,Thread Group 1-1,text,false,,2225,1,1,0,0

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="1" failures="1" name="defaultTestSuite" skipped="0" tests="3">
+    <testcase classname="defaultTestSuite" name="Success sample"/>
+    <testcase classname="defaultTestSuite" name="Assertion failure">
+        <failure message="Value expected to be 'SUCCESS', but found 'FAILED'"/>
+    </testcase>
+    <testcase classname="defaultTestSuite" name="Sample error">
+        <error message="Non HTTP response message"/>
+    </testcase>
+</testsuite>

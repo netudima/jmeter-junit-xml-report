@@ -32,7 +32,8 @@ public class JtlFileReader {
                 String label = record.get(JMeterJtlHeader.label);
                 boolean success = Boolean.parseBoolean(record.get(JMeterJtlHeader.success));
                 String failureMessage = record.get(JMeterJtlHeader.failureMessage);
-                recordProcessor.process(new JtlRecord(label, success, failureMessage));
+                String responseMessage = record.get(JMeterJtlHeader.responseMessage);
+                recordProcessor.process(new JtlRecord(label, success, responseMessage, failureMessage));
             }
         }
 

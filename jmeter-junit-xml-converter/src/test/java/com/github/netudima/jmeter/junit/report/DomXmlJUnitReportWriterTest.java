@@ -4,7 +4,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import java.io.File;
 import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DomXmlJUnitReportWriterTest {
 
@@ -14,30 +17,31 @@ public class DomXmlJUnitReportWriterTest {
     @Test
     public void test() throws IOException {
         tmpFolder.create();
-        try(DomXmlJUnitReportWriter surefireWriter =
-                new DomXmlJUnitReportWriter(tmpFolder.getRoot() + "/" + "test.xml", "default test suite")) {
-            surefireWriter.write(new JtlRecord(
-                            "Remove directory config source directory:policy-assignments using Java API",
-                            true,
-                            null
-                    )
-            );
+        File output = tmpFolder.newFile("test.xml");
+
+        try(DomXmlJUnitReportWriter surefireWriter = new DomXmlJUnitReportWriter(output, "defaultTestSuite")) {
 
             surefireWriter.write(new JtlRecord(
-                            "Retrieve config source directory:assign9145979183351985501.xml using REST API",
-                            false,
-                            "Test failed: text expected to equal /\n" +
-                                    "\n" +
-                                    "****** received  : [[[ConfigSource is not registered: directory:assign9145979183351985501.xml                                ]]]\n" +
-                                    "\n" +
-                                    "****** comparison: [[[<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-                                    "<object id=\"9145979183351985501\">\n" +
-                                    "    <polic...]]]\n" +
-                                    "\n" +
-                                    "/"
+                            "Success sample",
+                            true,
+                            "Response Message", null
                     )
             );
-        }
+            surefireWriter.write(new JtlRecord(
+                            "Assertion failure",
+                            false,
+                            "OK", "Value expected to be 'SUCCESS', but found 'FAILED'"
+                    )
+            );
+            surefireWriter.write(new JtlRecord(
+                            "Sample error",
+                            false,
+                            "Non HTTP response message", null
+                    )
+            );
+}
+        assertThat(output).hasSameContentAs(TestUtils.getTestFile("/DomXmlJUnitReportWriterTest.xml"));
+
     }
 
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="1" failures="2" name="testSuiteName" skipped="0" tests="5">
+    <testcase classname="testSuiteName" name="Valid sample"/>
+    <testcase classname="testSuiteName" name="Failed response assert">
+        <failure message="Value expected to be 'SUCCESS', but found 'FAILED'"/>
+    </testcase>
+    <testcase classname="testSuiteName" name="Failed multi-line assert">
+        <failure message="Test failed: text expected to equal /&#10;&#10;****** received  : [[[Resource is not registered]]]&#10;&#10;****** comparison: [[[&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&#10;&lt;object id=&quot;9145979183351985501&quot;&gt;&#10;    &lt;test...]]]&#10;&#10;/"/>
+    </testcase>
+    <testcase classname="testSuiteName" name="Another valid sample"/>
+    <testcase classname="testSuiteName" name="HTTP Request to an invalid address">
+        <error message="Non HTTP response message: googleddddddd.com: unknown error"/>
+    </testcase>
+</testsuite>

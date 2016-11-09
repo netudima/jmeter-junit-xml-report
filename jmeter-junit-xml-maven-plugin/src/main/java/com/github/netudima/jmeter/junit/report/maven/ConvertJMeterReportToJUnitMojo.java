@@ -6,6 +6,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 @Mojo(name = "jmeter-to-junit")
 public class ConvertJMeterReportToJUnitMojo extends AbstractMojo {
+
     public void execute() throws MojoExecutionException
     {
         getLog().info( "Hello, world." );
